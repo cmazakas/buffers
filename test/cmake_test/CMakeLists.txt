@@ -45,10 +45,11 @@ else()
       preprocessor
       io
     )
-
+    set(BUILD_TESTING OFF CACHE BOOL "Build the tests." FORCE)
     foreach(dep IN LISTS deps)
       add_subdirectory(../../../${dep} boostorg/${dep} EXCLUDE_FROM_ALL)
     endforeach()
+    set(BUILD_TESTING ON CACHE BOOL "Build the tests." FORCE)
 endif()
 
 add_executable(main main.cpp)

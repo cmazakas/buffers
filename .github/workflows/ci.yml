@@ -107,7 +107,7 @@ jobs:
           apt-get: ${{ matrix.install }}
 
       - name: Clone Boost
-        uses: cmazakas/cpp-actions/boost-clone
+        uses: cmazakas/cpp-actions/boost-clone@5290ec4234b60dc16d315e8b8db6fa58a88cd6df
         id: boost-clone
         with:
           branch: ${{ (github.ref_name == 'master' && github.ref_name) || 'develop' }}

@@ -215,7 +215,7 @@ jobs:
           build-dir: __build_root_test__
           generator: ${{ matrix.generator }}
           build-type: ${{ matrix.build-type }}
-          build-target: tests boost_buffers_tests
+          build-target: boost_buffers_tests
           run-tests: false
           install: false
           cxxstd: ${{ matrix.latest-cxxstd }}

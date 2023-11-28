@@ -211,7 +211,7 @@ jobs:
       - name: Root Project CMake Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
         with:
-          source-dir: .
+          source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}
           build-dir: __build_root_test__
           generator: ${{ matrix.generator }}
           build-type: ${{ matrix.build-type }}

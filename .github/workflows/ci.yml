@@ -155,7 +155,7 @@ jobs:
           build-dir: __build_cmake_test__
           generator: ${{ matrix.generator }}
           build-type: ${{ matrix.build-type }}
-          build-target: tests boost_buffers_tests
+          build-target: tests boost_buffers_tests boost_url
           run-tests: true
           install-prefix: $GITHUB_WORKSPACE/.local
           cxxstd: ${{ matrix.latest-cxxstd }}

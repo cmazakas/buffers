@@ -165,7 +165,7 @@ jobs:
           cxxflags: ${{ matrix.cxxflags }}
           shared: ${{ matrix.shared }}
           cmake-version: '>=3.15'
-          extra-args: -D Boost_VERBOSE=ON -D BOOST_INCLUDE_LIBRARIES=${{ steps.patch.outputs.module }}
+          extra-args: -D Boost_VERBOSE=ON -D BOOST_INCLUDE_LIBRARIES=${{ steps.patch.outputs.module }};url
           export-compile-commands: ${{ matrix.time-trace }}
           package: false
           package-artifact: false

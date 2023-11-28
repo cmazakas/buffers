@@ -54,7 +54,7 @@ jobs:
       matrix: ${{ steps.cpp-matrix.outputs.matrix }}
     steps:
       - name: Generate Test Matrix
-        uses: cmazakas/cpp-actions/cpp-matrix@1fdc70493501b45f6c43567295b76081e46499b6
+        uses: alandefreitas/cpp-actions/cpp-matrix@v1.5.0
         id: cpp-matrix
         with:
           compilers: |
@@ -86,7 +86,7 @@ jobs:
 
     name: ${{ matrix.name }}
     runs-on: ${{ fromJSON(needs.runner-selection.outputs.labelmatrix)[matrix.runs-on] }}
-    container: ${{ matrix.compiler == 'clang-14' && 'ubuntu:20.04' || matrix.container }}
+    container: ${{ matrix.compiler == 'clang' && (matrix.version == '14' || matrix.version == '13') && 'ubuntu:22.04' || matrix.container }}
     timeout-minutes: 120
 
     steps:

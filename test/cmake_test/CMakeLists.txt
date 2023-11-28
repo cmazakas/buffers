@@ -13,7 +13,7 @@ set(__ignore__ ${CMAKE_C_COMPILER})
 set(__ignore__ ${CMAKE_C_FLAGS})
 
 if(BOOST_CI_INSTALL_TEST)
-    find_package(Boost CONFIG REQUIRED COMPONENTS url)
+    find_package(Boost CONFIG REQUIRED COMPONENTS url buffers)
 else()
     set(BOOST_SUPERPROJECT_VERSION "1.84.0")
     set(BOOST_BUFFERS_BUILD_TESTS OFF CACHE BOOL "Build the tests." FORCE)

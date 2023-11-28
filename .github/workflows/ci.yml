@@ -86,7 +86,7 @@ jobs:
 
     name: ${{ matrix.name }}
     runs-on: ${{ fromJSON(needs.runner-selection.outputs.labelmatrix)[matrix.runs-on] }}
-    container: ${{ (matrix.compiler == 'clang-14') && 'ubuntu:22.04' || matrix.container }}
+    container: ${{ (matrix.compiler == 'clang-14') && 'ubuntu:20.04' || matrix.container }}
     timeout-minutes: 120
 
     steps:

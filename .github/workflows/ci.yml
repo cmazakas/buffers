@@ -54,7 +54,7 @@ jobs:
       matrix: ${{ steps.cpp-matrix.outputs.matrix }}
     steps:
       - name: Generate Test Matrix
-        uses: cmazakas/cpp-actions/cpp-matrix@1245d691e5244b4e2c7deaf105e281fd61061c5c
+        uses: cmazakas/cpp-actions/cpp-matrix@71fc40af48d7d26daf50fcca4b52d52e0ddfb4dd
         id: cpp-matrix
         with:
           compilers: |

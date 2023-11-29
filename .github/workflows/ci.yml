@@ -54,7 +54,7 @@ jobs:
       matrix: ${{ steps.cpp-matrix.outputs.matrix }}
     steps:
       - name: Generate Test Matrix
-        uses: cmazakas/cpp-actions/cpp-matrix@71fc40af48d7d26daf50fcca4b52d52e0ddfb4dd
+        uses: cmazakas/cpp-actions/cpp-matrix@8c2b4a535fc47fff46c81e1a1769c965df49713a
         id: cpp-matrix
         with:
           compilers: |
@@ -125,26 +125,26 @@ jobs:
           # Identify boost module being tested
           module=${GITHUB_REPOSITORY#*/}
           echo "module=$module" >> $GITHUB_OUTPUT
-          
+
           # Identify GitHub workspace root
           workspace_root=$(echo "$GITHUB_WORKSPACE" | sed 's/\\/\//g')
           echo -E "workspace_root=$workspace_root" >> $GITHUB_OUTPUT
-          
+
           # Remove module from boost-source
           rm -r "libs/$module" || true
           cd ..
-          
+
           # Copy cached boost-source to an isolated boost-root
           mkdir boost-root || true
           cp -r "boost-source"/* "boost-root"
-          
-          # Set boost-root output 
+
+          # Set boost-root output
           cd boost-root
           boost_root="$(pwd)"
           boost_root=$(echo "$boost_root" | sed 's/\\/\//g')
           echo -E "boost_root=$boost_root" >> $GITHUB_OUTPUT
-          
-          # Patch boost-root with workspace module 
+
+          # Patch boost-root with workspace module
           mkdir "libs/$module"
           cp -r "$workspace_root"/* "libs/$module"
 
@@ -256,7 +256,7 @@ jobs:
         if: ${{ matrix.coverage }}
         run: |
           set -x
-          
+
           # Generate report
           gcov_tool="gcov"
           if command -v "gcov-${{ steps.setup-cpp.outputs.version-major }}.${{ steps.setup-cpp.outputs.version-minor }}" &> /dev/null; then
@@ -265,10 +265,10 @@ jobs:
               gcov_tool="gcov-${{ steps.setup-cpp.outputs.version-major }}"
           fi
           lcov -c -q -o "../boost-root/__build_cmake_test__/coverage.info" -d "../boost-root/__build_cmake_test__" --include "$(pwd)/../boost-root/libs/${{steps.patch.outputs.module}}/*" --gcov-tool "$gcov_tool"
-          
+
           # Upload to codecov
           bash <(curl -s https://codecov.io/bash) -f "../boost-root/__build_cmake_test__/coverage.info"
-          
+
           # Summary
           echo "# Coverage" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

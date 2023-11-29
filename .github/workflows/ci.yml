@@ -58,7 +58,7 @@ jobs:
         id: cpp-matrix
         with:
           compilers: |
-            gcc >=4.8
+            gcc >=5.1
             clang >=3.8
             msvc >=14.20
             apple-clang *
@@ -304,44 +304,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           limit: 200
           tag-pattern: 'boost-.*\..*\..*'
-
-  antora:
-    name: Antora Docs
-    needs: [ runner-selection ]
-    runs-on: ${{ fromJSON(needs.runner-selection.outputs.labelmatrix)['ubuntu-latest'] }}
-    steps:
-      - name: Clone Boost.Buffers
-        uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install Clang
-        run: |
-          wget https://apt.llvm.org/llvm.sh
-          chmod +x llvm.sh
-          sudo ./llvm.sh 14
-          sudo apt-get update
-          sudo apt-get install clang-14
-          sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 100
-          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-14 100
-          clang-14 --version
-          clang --version
-
-#      The collector script will download mrdocs
-#      - name: Install MrDocs
-#        run: |
-#          wget https://github.com/cppalliance/mrdocs/releases/download/develop-release/MrDocs-1.0.0-Linux.tar.gz
-#          sudo tar -xzf MrDocs-1.0.0-Linux.tar.gz -C /usr/local --strip-components=1
-
-      - name: Build Antora Docs
-        run: |
-          cd doc
-          bash ./build_antora.sh
-
-      - name: Create Antora Docs Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: antora-docs
-          path: doc/build/site

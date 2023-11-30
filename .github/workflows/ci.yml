@@ -99,7 +99,7 @@ jobs:
         with:
           compiler: ${{ matrix.compiler }}
           version: ${{ matrix.version }}
-          check-latest: true
+          check-latest: ${{ matrix.compiler != 'clang' || matrix.version != '^3.8' }}
           trace-commands: true
 
       - name: Install packages

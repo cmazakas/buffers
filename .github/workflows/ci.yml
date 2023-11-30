@@ -99,6 +99,7 @@ jobs:
         with:
           compiler: ${{ matrix.compiler }}
           version: ${{ matrix.version }}
+          check-latest: true
 
       - name: Install packages
         uses: alandefreitas/cpp-actions/package-install@v1.5.0

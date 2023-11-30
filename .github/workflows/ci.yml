@@ -54,7 +54,7 @@ jobs:
       matrix: ${{ steps.cpp-matrix.outputs.matrix }}
     steps:
       - name: Generate Test Matrix
-        uses: cmazakas/cpp-actions/cpp-matrix@2a55b976502ac9e4bfcc51189012d3afc65be967
+        uses: cmazakas/cpp-actions/cpp-matrix@b910e58e9a22a30d7302b1551baae8764a376966
         id: cpp-matrix
         with:
           compilers: |
@@ -94,7 +94,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup C++
-        uses: cmazakas/cpp-actions/setup-cpp@2a55b976502ac9e4bfcc51189012d3afc65be967
+        uses: cmazakas/cpp-actions/setup-cpp@b910e58e9a22a30d7302b1551baae8764a376966
         id: setup-cpp
         with:
           compiler: ${{ matrix.compiler }}
@@ -108,7 +108,7 @@ jobs:
           apt-get: ${{ matrix.install }}
 
       - name: Clone Boost
-        uses: cmazakas/cpp-actions/boost-clone@2a55b976502ac9e4bfcc51189012d3afc65be967
+        uses: cmazakas/cpp-actions/boost-clone@b910e58e9a22a30d7302b1551baae8764a376966
         id: boost-clone
         with:
           branch: ${{ (github.ref_name == 'master' && github.ref_name) || 'develop' }}

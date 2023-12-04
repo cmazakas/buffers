@@ -13,3 +13,12 @@
 
 # Visual Studio Code
 /.vscode
+
+__build__/
+doc/node_modules
+doc/output
+doc/build/
+doc/modules/ROOT/pages
+doc/*.sh
+
+toolchain.cmake

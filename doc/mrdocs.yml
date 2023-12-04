@@ -1,0 +1,13 @@
+verbose: true
+multipage: true
+inaccessible-members: never
+include:
+  - ../include
+source-root: ..
+generate: adoc
+filters:
+  symbols:
+    exclude:
+      - 'boost::buffers::detail'
+      - 'boost::buffers::*::detail'
+      - 'boost::empty_'

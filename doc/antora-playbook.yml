@@ -1,0 +1,11 @@
+site:
+  title: Boost.Buffers
+  start_page: buffers::index.adoc
+content:
+  sources:
+  - url: ..
+    start_path: doc
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true

@@ -15,6 +15,12 @@ set(__ignore__ ${CMAKE_C_FLAGS})
 
 if(BOOST_CI_INSTALL_TEST)
   find_package(Boost CONFIG REQUIRED COMPONENTS buffers)
+
+  if (CMAKE_HOST_WIN32 AND BUILD_SHARED_LIBS)
+    add_custom_target(copy_dlls
+      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:Boost::buffers> ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+  endif()
+
 else()
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
   add_subdirectory(../.. boostorg/buffers)
@@ -43,6 +49,10 @@ endif()
 
 add_executable(main main.cpp)
 target_link_libraries(main Boost::buffers)
+
+if (CMAKE_HOST_WIN32 AND BUILD_SHARED_LIBS)
+  add_dependencies(main copy_dlls)
+endif()
 
 enable_testing()
 add_test(NAME main COMMAND main)

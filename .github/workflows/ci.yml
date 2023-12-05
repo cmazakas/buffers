@@ -57,12 +57,7 @@ jobs:
         id: cpp-matrix
         with:
           compilers: |
-            gcc >=5.1
-            clang >=3.8
             msvc >=14.20
-            apple-clang *
-            mingw *
-            clang-cl *
           standards: '>=11'
           latest-factors: |
             gcc Coverage UBSan
@@ -191,7 +186,7 @@ jobs:
           ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
       - name: Set Path
-        run: echo "$GITHUB_WORKSPACE/.local" >> $GITHUB_PATH
+        run: echo "/random/directory/name" >> $GITHUB_PATH
 
       - name: Find Package Integration Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0

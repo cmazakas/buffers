@@ -50,7 +50,7 @@ endif()
 add_executable(main main.cpp)
 target_link_libraries(main Boost::buffers)
 
-if (CMAKE_HOST_WIN32 AND BUILD_SHARED_LIBS)
+if (BOOST_CI_INSTALL_TEST AND CMAKE_HOST_WIN32 AND BUILD_SHARED_LIBS)
   add_dependencies(main copy_dlls)
 endif()
 

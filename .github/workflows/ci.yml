@@ -190,10 +190,11 @@ jobs:
           extra-args: -D BOOST_CI_INSTALL_TEST=OFF
           ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
+      - name: Set Path
+        run: echo "$GITHUB_WORKSPACE/.local" >> $GITHUB_PATH
+
       - name: Find Package Integration Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
-        env:
-            PATH: "$PATH;$GITHUB_WORKSPACE/.local"
         with:
           source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
           build-dir: __build_cmake_install_test__

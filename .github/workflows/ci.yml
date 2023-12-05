@@ -192,6 +192,8 @@ jobs:
 
       - name: Find Package Integration Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
+        env:
+            PATH: "$PATH;$GITHUB_WORKSPACE/.local"
         with:
           source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
           build-dir: __build_cmake_install_test__

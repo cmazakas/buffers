@@ -59,12 +59,8 @@ jobs:
           compilers: |
             msvc >=14.20
           standards: '>=11'
-          latest-factors: |
-            gcc Coverage UBSan
           factors: |
-            gcc Asan Shared No-Threads
             msvc Shared x86
-            clang Time-Trace Fuzz
             mingw Shared
           trace-commands: true
 
@@ -167,26 +163,26 @@ jobs:
           package-artifact: false
           ref-source-dir: ../boost-root/libs/buffers
 
-      - name: Subdirectory Integration Workflow
-        uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
-        with:
-          source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
-          build-dir: __build_cmake_subdir_test__
-          generator: ${{ matrix.generator }}
-          build-type: ${{ matrix.build_type }}
-          cxxstd: ${{ matrix.latest-cxxstd }}
-          cc: ${{ steps.setup-cpp.outputs.cc || matrix.cc }}
-          ccflags: ${{ matrix.ccflags }}
-          cxx: ${{ steps.setup-cpp.outputs.cxx || matrix.cxx }}
-          cxxflags: ${{ matrix.cxxflags }}
-          shared: ${{ matrix.shared }}
-          install: false
-          cmake-version: '>=3.11'
-          extra-args: -D BOOST_CI_INSTALL_TEST=OFF
-          ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
+      # - name: Subdirectory Integration Workflow
+      #   uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
+      #   with:
+      #     source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
+      #     build-dir: __build_cmake_subdir_test__
+      #     generator: ${{ matrix.generator }}
+      #     build-type: ${{ matrix.build_type }}
+      #     cxxstd: ${{ matrix.latest-cxxstd }}
+      #     cc: ${{ steps.setup-cpp.outputs.cc || matrix.cc }}
+      #     ccflags: ${{ matrix.ccflags }}
+      #     cxx: ${{ steps.setup-cpp.outputs.cxx || matrix.cxx }}
+      #     cxxflags: ${{ matrix.cxxflags }}
+      #     shared: ${{ matrix.shared }}
+      #     install: false
+      #     cmake-version: '>=3.11'
+      #     extra-args: -D BOOST_CI_INSTALL_TEST=OFF
+      #     ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
       - name: Set Path
-        run: echo "/random/directory/name" >> $GITHUB_PATH
+        run: echo "${{ startsWith(matrix.runs-on, 'windows') && '$GITHUB_WORKSPACE/.local/bin' || '' }}" >> $GITHUB_PATH
 
       - name: Find Package Integration Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0

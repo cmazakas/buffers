@@ -199,7 +199,7 @@ jobs:
           package: false
           package-artifact: false
           ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
-          cmake-version: '=3.27'
+          cmake-version: '>=3.11'
           # trace-commands: true
 
       - name: Root Project CMake Workflow

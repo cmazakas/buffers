@@ -160,26 +160,27 @@ jobs:
           package-artifact: false
           ref-source-dir: ../boost-root/libs/buffers
 
-      # - name: Subdirectory Integration Workflow
-      #   uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
-      #   with:
-      #     source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
-      #     build-dir: __build_cmake_subdir_test__
-      #     generator: ${{ matrix.generator }}
-      #     build-type: ${{ matrix.build_type }}
-      #     cxxstd: ${{ matrix.latest-cxxstd }}
-      #     cc: ${{ steps.setup-cpp.outputs.cc || matrix.cc }}
-      #     ccflags: ${{ matrix.ccflags }}
-      #     cxx: ${{ steps.setup-cpp.outputs.cxx || matrix.cxx }}
-      #     cxxflags: ${{ matrix.cxxflags }}
-      #     shared: ${{ matrix.shared }}
-      #     install: false
-      #     cmake-version: '>=3.11'
-      #     extra-args: -D BOOST_CI_INSTALL_TEST=OFF
-      #     ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
+      - name: Subdirectory Integration Workflow
+        uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
+        with:
+          source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
+          build-dir: __build_cmake_subdir_test__
+          generator: ${{ matrix.generator }}
+          build-type: ${{ matrix.build_type }}
+          cxxstd: ${{ matrix.latest-cxxstd }}
+          cc: ${{ steps.setup-cpp.outputs.cc || matrix.cc }}
+          ccflags: ${{ matrix.ccflags }}
+          cxx: ${{ steps.setup-cpp.outputs.cxx || matrix.cxx }}
+          cxxflags: ${{ matrix.cxxflags }}
+          shared: ${{ matrix.shared }}
+          install: false
+          cmake-version: '>=3.8'
+          extra-args: -D BOOST_CI_INSTALL_TEST=OFF
+          ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
-      # - name: Set Path
-      #   run: echo "${{ startsWith(matrix.runs-on, 'windows') && '$GITHUB_WORKSPACE/.local/bin' || '' }}" >> $GITHUB_PATH
+      - name: Set Path
+        if: startsWith(matrix.runs-on, 'windows') && matrix.shared
+        run: echo "$GITHUB_WORKSPACE/.local/bin" >> $GITHUB_PATH
 
       - name: Find Package Integration Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
@@ -195,7 +196,7 @@ jobs:
           cxxflags: ${{ matrix.cxxflags }}
           shared: ${{ matrix.shared }}
           install: false
-          cmake-version: '>=3.11'
+          cmake-version: '>=3.13'
           extra-args: -D BOOST_CI_INSTALL_TEST=ON -D CMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/.local
           ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
@@ -216,7 +217,7 @@ jobs:
           cxxflags: ${{ matrix.cxxflags }}
           shared: ${{ matrix.shared }}
           extra-args: -D Boost_VERBOSE=ON -D BUILD_TESTING=ON -D BOOST_SRC_DIR="../boost-root"
-          cmake-version: '>=3.11'
+          cmake-version: '>=3.8'
           package: false
           package-artifact: false
           ref-source-dir: .

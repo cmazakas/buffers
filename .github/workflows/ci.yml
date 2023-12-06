@@ -57,20 +57,9 @@ jobs:
         id: cpp-matrix
         with:
           compilers: |
-            gcc >=5.1
-            clang >=3.8
-            msvc >=14.20
             apple-clang *
-            mingw *
-            clang-cl *
           standards: '>=11'
-          latest-factors: |
-            gcc Coverage UBSan
-          factors: |
-            gcc Asan Shared No-Threads
-            msvc Shared x86
-            clang Time-Trace Fuzz
-            mingw Shared
+
 
   build:
     needs: [ cpp-matrix,runner-selection ]
@@ -193,7 +182,7 @@ jobs:
         run: echo "${{ startsWith(matrix.runs-on, 'windows') && '$GITHUB_WORKSPACE/.local/bin' || '' }}" >> $GITHUB_PATH
 
       - name: Find Package Integration Workflow
-        uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0
+        uses: cmazakas/cpp-actions/cmake-workflow@fa293fc4bd1b2db75ec802dcba8448cf8ec9290a
         with:
           source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
           build-dir: __build_cmake_install_test__

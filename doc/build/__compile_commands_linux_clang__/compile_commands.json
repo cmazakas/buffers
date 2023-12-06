@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/exbigboss/cpp/boost-root/libs/buffers/doc/build/__compile_commands_linux_clang__",
+  "command": "/usr/bin/clang++ -DBOOST_BUFFERS_NO_LIB -DBOOST_BUFFERS_NO_LIB=1 -DBOOST_BUFFERS_STATIC_LINK=1 -I/home/exbigboss/cpp/boost-root/libs/buffers/include -I/home/exbigboss/cpp/boost-root/libs/assert/include -I/home/exbigboss/cpp/boost-root/libs/config/include -I/home/exbigboss/cpp/boost-root/libs/static_assert/include -I/home/exbigboss/cpp/boost-root/libs/system/include -I/home/exbigboss/cpp/boost-root/libs/throw_exception/include -I/home/exbigboss/cpp/boost-root/libs/variant2/include -I/home/exbigboss/cpp/boost-root/libs/mp11/include -I/home/exbigboss/cpp/boost-root/libs/winapi/include -I/home/exbigboss/cpp/boost-root/libs/predef/include -isystem /usr/include/c++/13 -isystem /usr/include/x86_64-linux-gnu/c++/13 -isystem /usr/include/c++/13/backward -isystem /usr/lib/llvm-16/lib/clang/16/include -isystem /usr/local/include -isystem /usr/include/x86_64-linux-gnu -isystem /usr/include  -o CMakeFiles/boost_buffers.dir/src/src.cpp.o -c /home/exbigboss/cpp/boost-root/libs/buffers/src/src.cpp",
+  "file": "/home/exbigboss/cpp/boost-root/libs/buffers/src/src.cpp",
+  "output": "CMakeFiles/boost_buffers.dir/src/src.cpp.o"
+}
+]

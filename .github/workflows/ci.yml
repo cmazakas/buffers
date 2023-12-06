@@ -199,6 +199,7 @@ jobs:
           package: false
           package-artifact: false
           ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
+          trace-commands: true
 
       - name: Root Project CMake Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0

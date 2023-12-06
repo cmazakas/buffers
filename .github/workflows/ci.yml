@@ -178,8 +178,8 @@ jobs:
       #     extra-args: -D BOOST_CI_INSTALL_TEST=OFF
       #     ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
-      - name: Set Path
-        run: echo "${{ startsWith(matrix.runs-on, 'windows') && '$GITHUB_WORKSPACE/.local/bin' || '' }}" >> $GITHUB_PATH
+      # - name: Set Path
+      #   run: echo "${{ startsWith(matrix.runs-on, 'windows') && '$GITHUB_WORKSPACE/.local/bin' || '' }}" >> $GITHUB_PATH
 
       - name: Find Package Integration Workflow
         uses: cmazakas/cpp-actions/cmake-workflow@394a141c3a9011ba71371d8e699635411877d7c4

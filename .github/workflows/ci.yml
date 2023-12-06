@@ -186,8 +186,8 @@ jobs:
         with:
           source-dir: ../boost-root/libs/${{ steps.patch.outputs.module }}/test/cmake_test
           build-dir: __build_cmake_install_test__
-          generator: ${{ matrix.compiler == 'apple-clang' && 'Xcode' || matrix.generator }}
-          build-type: ${{ matrix.build-type }}
+          generator: ${{ matrix.generator }}
+          build-type: ${{ matrix.build_type }}
           cxxstd: ${{ matrix.latest-cxxstd }}
           cc: ${{ steps.setup-cpp.outputs.cc || matrix.cc }}
           ccflags: ${{ matrix.ccflags }}
@@ -195,12 +195,9 @@ jobs:
           cxxflags: ${{ matrix.cxxflags }}
           shared: ${{ matrix.shared }}
           install: false
-          extra-args: -D BOOST_CI_INSTALL_TEST=ON -D CMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/.local
-          package: false
-          package-artifact: false
-          ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
           cmake-version: '>=3.11'
-          # trace-commands: true
+          extra-args: -D BOOST_CI_INSTALL_TEST=ON -D CMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/.local
+          ref-source-dir: ../boost-root/libs/buffers/test/cmake_test
 
       - name: Root Project CMake Workflow
         uses: alandefreitas/cpp-actions/cmake-workflow@v1.5.0

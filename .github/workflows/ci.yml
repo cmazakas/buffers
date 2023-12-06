@@ -216,6 +216,7 @@ jobs:
           cxxflags: ${{ matrix.cxxflags }}
           shared: ${{ matrix.shared }}
           extra-args: -D Boost_VERBOSE=ON -D BUILD_TESTING=ON -D BOOST_SRC_DIR="../boost-root"
+          cmake-version: '>=3.11'
           package: false
           package-artifact: false
           ref-source-dir: .

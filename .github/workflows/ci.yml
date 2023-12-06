@@ -57,8 +57,21 @@ jobs:
         id: cpp-matrix
         with:
           compilers: |
+            gcc >=5.1
+            clang >=3.8
+            msvc >=14.20
             apple-clang *
+            mingw *
+            clang-cl *
           standards: '>=11'
+          latest-factors: |
+            gcc Coverage UBSan
+          factors: |
+            gcc Asan Shared No-Threads
+            msvc Shared x86
+            clang Time-Trace Fuzz
+            mingw Shared
+          trace-commands: true
 
 
   build:

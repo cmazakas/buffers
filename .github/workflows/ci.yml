@@ -766,6 +766,7 @@ jobs:
 
           # Patch boost-root with workspace module
           cp -r "$workspace_root"/buffers-root "libs/$module"
+          python3 tools/boostdep/depinst/depinst.py buffers
 
       - name: Boost B2 Workflow
         uses: alandefreitas/cpp-actions/b2-workflow@v1.7.0

@@ -734,7 +734,6 @@ jobs:
           boost-dir: boost-source
           scan-modules-dir: buffers-root
           scan-modules-ignore: buffers
-          modules: detail
 
       - name: Patch Boost
         id: patch

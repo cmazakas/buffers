@@ -65,7 +65,7 @@ jobs:
             cxxstd: "17,20"
             latest-cxxstd: "20"
             runs-on: "windows-2022"
-            b2-toolset: "msvc-14.3"
+            b2-toolset: "msvc"
             generator: "Visual Studio 17 2022"
             is-latest: true
             name: "MSVC 14.34: C++17-20"
@@ -77,7 +77,7 @@ jobs:
             cxxstd: "17,20"
             latest-cxxstd: "20"
             runs-on: "windows-2022"
-            b2-toolset: "msvc-14.3"
+            b2-toolset: "msvc"
             generator: "Visual Studio 17 2022"
             is-latest: true
             name: "MSVC 14.34: C++17-20 (x86)"
@@ -89,7 +89,7 @@ jobs:
             cxxstd: "17,20"
             latest-cxxstd: "20"
             runs-on: "windows-2022"
-            b2-toolset: "msvc-14.3"
+            b2-toolset: "msvc"
             generator: "Visual Studio 17 2022"
             is-latest: true
             name: "MSVC 14.34: C++17-20 (shared)"
@@ -102,7 +102,7 @@ jobs:
             cxxstd: "14,17"
             latest-cxxstd: "17"
             runs-on: "windows-2019"
-            b2-toolset: "msvc-14.2"
+            b2-toolset: "msvc"
             generator: "Visual Studio 16 2019"
             is-earliest: true
             name: "MSVC 14.29: C++14-17"

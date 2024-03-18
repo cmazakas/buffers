@@ -3,9 +3,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO cmazakas/buffers
-    REF e4caad4415e2ae4e3b84d95581b22a517019f31a
+    REF 3b10ab122cca5eb486d34a1c7d85acd090441216
     SHA512 2d04336e05226a630fc12f4d0c2e0eea3c9e08fe3033d07550758d746dafa73a3ef87f7a6a37c228f4ea559ec22886b6da5b077851c1b88c353b4e2542d0db48
-    HEAD_REF jamfile-fixes
+    HEAD_REF develop
 )
 
 vcpkg_replace_string("${SOURCE_PATH}/build/Jamfile"
